@@ -4,7 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52d3b605-f5da-41d7-97d6-ed5da75bb43f" name="Changes" comment="" />
+    <list default="true" id="52d3b605-f5da-41d7-97d6-ed5da75bb43f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Room/RoomList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Room/RoomLobby.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/src/app.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/src/config/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/src/controllers/gameController.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/src/controllers/roomController.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/src/middleware/auth.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/src/middleware/errorHandler.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/src/routes/game.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/src/routes/rooms.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/src/server.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/src/services/gameService.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/src/services/roomService.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/src/socket/gameEvents.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/src/types/express.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/src/types/socket.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/contexts/AuthContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/contexts/AuthContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,9 +41,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="302GNl5GePawCysYXr4murHz2Ae" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -23,12 +51,13 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Jest.renders learn react link.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/leongkaymei/Desktop/Projects/Frontend/german-bridge/src/components/Game",
+    "last_opened_file_path": "/Users/leongkaymei/Desktop/Projects/Frontend/german-bridge/src/server",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -41,6 +70,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/server" />
       <recent name="$PROJECT_DIR$/src/components/Game" />
     </key>
   </component>
@@ -77,7 +107,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1752818217044</updated>
-      <workItem from="1752818218188" duration="4263000" />
+      <workItem from="1752818218188" duration="6154000" />
+      <workItem from="1753021894420" duration="6111000" />
     </task>
     <servers />
   </component>
