@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import { User } from '../hooks/useAuth';
+import {v4 as uuidv4} from 'uuid';
 
 interface AuthContextType {
     user: User | null;
@@ -52,8 +53,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     const login = async (username: string) => {
         try {
+            let uuid = uuidv4();
             const usr: User = {
-                id: '',
+                id: uuid,
                 name: username,
                 email: ''
             } ;

@@ -7,6 +7,7 @@ export interface Player {
     score: number;
     position: 'north' | 'south' | 'east' | 'west';
     tricksWon: number;
+    isReady: boolean;
 }
 
 export interface PlayerAction {

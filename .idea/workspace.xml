@@ -5,33 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52d3b605-f5da-41d7-97d6-ed5da75bb43f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Room/RoomList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Room/RoomLobby.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/src/app.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/src/config/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/src/controllers/gameController.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/src/controllers/roomController.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/src/middleware/auth.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/src/middleware/errorHandler.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/src/routes/game.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/src/routes/rooms.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/src/server.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/src/services/gameService.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/src/services/roomService.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/src/socket/gameEvents.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/src/types/express.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/src/types/socket.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Room/RoomList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Room/RoomList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Room/RoomLobby.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Room/RoomLobby.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/contexts/AuthContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/contexts/AuthContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/player.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/player.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,25 +27,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Jest.renders learn react link.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/leongkaymei/Desktop/Projects/Frontend/german-bridge/src/server",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.jest.jest_package": "/Users/leongkaymei/Desktop/Projects/Frontend/german-bridge/node_modules/react-scripts",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Users/leongkaymei/Desktop/Projects/Frontend/german-bridge/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Jest.renders learn react link.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/leongkaymei/Desktop/Projects/Frontend/german-bridge/src/server&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/leongkaymei/Desktop/Projects/Frontend/german-bridge/node_modules/react-scripts&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/leongkaymei/Desktop/Projects/Frontend/german-bridge/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/server" />
@@ -108,7 +86,8 @@
       <option name="presentableId" value="Default" />
       <updated>1752818217044</updated>
       <workItem from="1752818218188" duration="6154000" />
-      <workItem from="1753021894420" duration="6111000" />
+      <workItem from="1753021894420" duration="6214000" />
+      <workItem from="1753068265296" duration="2712000" />
     </task>
     <servers />
   </component>
