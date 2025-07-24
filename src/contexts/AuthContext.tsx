@@ -4,8 +4,6 @@ import {v4 as uuidv4} from 'uuid';
 
 interface AuthContextType {
     user: User | null;
-    // TODO Login verification logic
-    // login: (email: string, password: string) => Promise<void>;
     login: (username: string) => Promise<void>;
     logout: () => void;
     loading: boolean;
@@ -30,37 +28,26 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         setLoading(false);
     }, []);
 
-    //         // TODO Replace with login API call
-    // const login = async (email: string, password: string) => {
-    //     try {
-    //         const response = await fetch('/api/auth/login', {
-    //             method: 'POST',
-    //             headers: { 'Content-Type': 'application/json' },
-    //             body: JSON.stringify({ email, password })
-    //         });
-    //
-    //         if (!response.ok) {
-    //             throw new Error('Login failed');
-    //         }
-    //
-    //         const userData = await response.json();
-    //         setUser(userData.user);
-    //         localStorage.setItem('user', JSON.stringify(userData.user));
-    //     } catch (error) {
-    //         throw error;
-    //     }
-    // };
-
     const login = async (username: string) => {
         try {
             let uuid = uuidv4();
             const usr: User = {
                 id: uuid,
-                name: username,
-                email: ''
-            } ;
-            setUser(usr);
-            localStorage.setItem('user', JSON.stringify(usr));
+                name: username
+            };
+            const response = await fetch('http://localhost:3001/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({"user": usr})
+            });
+
+            if (!response.ok) {
+                throw new Error('Login failed');
+            }
+
+            const userData = await response.json();
+            setUser(userData.user);
+            localStorage.setItem('user', JSON.stringify(userData.user));
         } catch (error) {
             throw error;
         }

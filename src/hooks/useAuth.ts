@@ -1,10 +1,9 @@
-import { useState, useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 
 export interface User {
     id: string;
     name: string;
-    email: string;
 }
 
 export const useAuth = () => {

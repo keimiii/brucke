@@ -21,9 +21,25 @@ const SamplePlayers = [
 const RoomLobby: React.FC = () => {
     const { roomId } = useParams();
     const navigate = useNavigate();
-    const handleGameStart = () => {
-        const newGameID = uuidv4();
-        navigate(`/game/${newGameID}`);
+    const handleGameStart = async (roomId: string | undefined) => {
+        // Call startGame API and navigate to game page
+            try {
+                const response = await fetch(`/api/games/${roomId}/startGame`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ roomId })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Start game failed.');
+                }
+
+                const gameData = await response.json();
+                localStorage.setItem('gameId', JSON.stringify(gameData.id));
+                navigate(`/game/${gameData.id}`);
+            } catch (error) {
+                throw error;
+            }
     };
 
     return (
@@ -38,7 +54,7 @@ const RoomLobby: React.FC = () => {
                     </li>
                 ))}
             </ul>
-            <button onClick={() => handleGameStart()}>Start Game</button>
+            <button onClick={() => handleGameStart(roomId)}>Start Game</button>
         </div>
     );
 };

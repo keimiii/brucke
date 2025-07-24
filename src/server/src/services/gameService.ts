@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 
 export interface Card {
     suit: 'hearts' | 'diamonds' | 'clubs' | 'spades';
@@ -254,14 +254,12 @@ export class GameService {
 
     private getPlayerView(game: GameState, playerId: string): GameState {
         // Return game state with hidden information for other players
-        const playerView: GameState = {
+        return {
             ...game,
             players: game.players.map(player => ({
                 ...player,
                 hand: player.id === playerId ? player.hand : []
             }))
         };
-
-        return playerView;
     }
 }

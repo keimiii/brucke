@@ -21,8 +21,8 @@ export const getGameState = async (req: AuthRequest, res: Response, next: NextFu
 
 export const startGame = async (req: AuthRequest, res: Response, next: NextFunction) => {
     try {
-        const { gameId } = req.params;
-        const game = await gameService.startGame(gameId, req.user!.id);
+        const { roomId } = req.params;
+        const game = await gameService.startGame(roomId, req.user!.id);
 
         res.json({ game });
     } catch (error) {

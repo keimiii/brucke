@@ -4,11 +4,11 @@ import * as gameController from '../controllers/gameController';
 
 const router = express.Router();
 
+// Start a game
+router.post('/:roomId/start', authenticateToken, gameController.startGame);
+
 // Get game state
 router.get('/:gameId', authenticateToken, gameController.getGameState);
-
-// Start a game
-router.post('/:gameId/start', authenticateToken, gameController.startGame);
 
 // Make a move
 router.post('/:gameId/move', authenticateToken, gameController.makeMove);

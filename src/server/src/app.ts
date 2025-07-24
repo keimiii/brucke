@@ -5,6 +5,7 @@ import rateLimit from 'express-rate-limit';
 import config from './config';
 import gameRoutes from './routes/game';
 import roomRoutes from './routes/rooms';
+import authRoutes from './routes/auth';
 import { errorHandler } from './middleware/errorHandler';
 
 const app = express();
@@ -33,6 +34,7 @@ app.get('/health', (req, res) => {
 });
 
 // API routes
+app.use('/api/auth', authRoutes);
 app.use('/api/games', gameRoutes);
 app.use('/api/rooms', roomRoutes);
 
