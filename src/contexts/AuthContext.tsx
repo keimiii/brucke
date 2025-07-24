@@ -45,9 +45,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                 throw new Error('Login failed');
             }
 
-            const userData = await response.json();
-            setUser(userData.user);
-            localStorage.setItem('user', JSON.stringify(userData.user));
+            const jwt = await response.json();
+            setUser(usr);
+            localStorage.setItem('user', JSON.stringify(usr));
+            localStorage.setItem('token', JSON.stringify(jwt));
         } catch (error) {
             throw error;
         }
@@ -56,6 +57,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const logout = () => {
         setUser(null);
         localStorage.removeItem('user');
+        localStorage.removeItem('token');
     };
 
     return (
