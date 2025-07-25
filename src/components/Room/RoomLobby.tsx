@@ -1,7 +1,6 @@
 import React from "react";
 import { useParams } from 'react-router';
 import {useNavigate} from "react-router-dom";
-import {v4 as uuidv4} from 'uuid';
 
 const SamplePlayers = [
     {
@@ -24,12 +23,12 @@ const RoomLobby: React.FC = () => {
     const handleGameStart = async (roomId: string | undefined) => {
         // Call startGame API and navigate to game page
             try {
-                const response = await fetch(`/api/games/${roomId}/startGame`, {
+                const tk = localStorage.getItem('token');
+                const response = await fetch(`http://localhost:3001/api/games/${roomId}/start`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ roomId })
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk },
+                    body: JSON.stringify({ roomId: roomId })
                 });
-
                 if (!response.ok) {
                     throw new Error('Start game failed.');
                 }

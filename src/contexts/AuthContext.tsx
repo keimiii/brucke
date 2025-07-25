@@ -45,10 +45,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                 throw new Error('Login failed');
             }
 
-            const jwt = await response.json();
+            const res = await response.json();
             setUser(usr);
             localStorage.setItem('user', JSON.stringify(usr));
-            localStorage.setItem('token', JSON.stringify(jwt));
+            localStorage.setItem('token', res.token);
         } catch (error) {
             throw error;
         }
