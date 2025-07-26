@@ -21,8 +21,8 @@ export const createRoom = async (req: AuthRequest, res: Response, next: NextFunc
             name,
             maxPlayers,
             isPrivate,
-            createdBy: req.user!.id,
-            creatorName: req.user!.username
+            createdBy: req.user!.userId,
+            creatorName: req.user!.userName
         });
 
         res.status(201).json({ room });
@@ -45,7 +45,7 @@ export const joinRoom = async (req: AuthRequest, res: Response, next: NextFuncti
 export const leaveRoom = async (req: AuthRequest, res: Response, next: NextFunction) => {
     try {
         const { roomId } = req.params;
-        const room = await roomService.leaveRoom(roomId, req.user!.id);
+        const room = await roomService.leaveRoom(roomId, req.user!.userId);
 
         res.json({ room });
     } catch (error) {

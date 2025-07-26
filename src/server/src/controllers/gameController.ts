@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Response, NextFunction } from 'express';
 import { GameService } from '../services/gameService';
 import { AuthRequest } from '../middleware/auth';
 
@@ -7,7 +7,7 @@ const gameService = new GameService();
 export const getGameState = async (req: AuthRequest, res: Response, next: NextFunction) => {
     try {
         const { gameId } = req.params;
-        const gameState = await gameService.getGameState(gameId, req.user!.id);
+        const gameState = await gameService.getGameState(gameId, req.user!.userId);
 
         if (!gameState) {
             return res.status(404).json({ error: 'Game not found' });
@@ -22,7 +22,7 @@ export const getGameState = async (req: AuthRequest, res: Response, next: NextFu
 export const startGame = async (req: AuthRequest, res: Response, next: NextFunction) => {
     try {
         const { roomId } = req.params;
-        const game = await gameService.startGame(roomId, req.user!.id);
+        const game = await gameService.startGame(roomId, req.user!.userId);
 
         res.json({ game });
     } catch (error) {
@@ -35,7 +35,7 @@ export const makeMove = async (req: AuthRequest, res: Response, next: NextFuncti
         const { gameId } = req.params;
         const { move } = req.body;
 
-        const gameState = await gameService.makeMove(gameId, req.user!.id, move);
+        const gameState = await gameService.makeMove(gameId, req.user!.userId, move);
 
         res.json({ gameState });
     } catch (error) {

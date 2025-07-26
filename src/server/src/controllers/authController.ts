@@ -6,8 +6,8 @@ import { Response, NextFunction } from "express";
 export const login = async (req: AuthRequest, res: Response, next: NextFunction) => {
   try {
       const authReq = req.body.user;
-      const token = jwt.sign({userId: authReq!.id}, config.jwtSecret, {
-          expiresIn: '4h',
+      const token = jwt.sign({userId: authReq!.userId, userName: authReq!.userName}, config.jwtSecret, {
+          expiresIn: '12h',
       });
       res.status(200).json({token});
   } catch (error) {

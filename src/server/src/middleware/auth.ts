@@ -4,8 +4,8 @@ import config from '../config';
 
 export interface AuthRequest extends Request {
     user?: {
-        id: string;
-        username: string;
+        userId: string;
+        userName: string;
     };
 }
 
@@ -26,7 +26,7 @@ export const authenticateToken = (
             return res.status(403).json({ error: 'Invalid or expired token' });
         }
 
-        req.user = decoded as { id: string; username: string };
+        req.user = decoded as { userId: string; userName: string };
         next();
     });
 };

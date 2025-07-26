@@ -32,8 +32,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         try {
             let uuid = uuidv4();
             const usr: User = {
-                id: uuid,
-                name: username
+                userId: uuid,
+                userName: username
             };
             const response = await fetch('http://localhost:3001/api/auth/login', {
                 method: 'POST',

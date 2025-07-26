@@ -20,7 +20,7 @@ const GameView: React.FC = () => {
         if (!gameId || !socket || !user) return;
 
         // Join the game room
-        socket.emit('joinGame', { gameId, playerId: user.id });
+        socket.emit('joinGame', { gameId, playerId: user.userId });
 
         // Listen for game state updates
         socket.on('gameStateUpdate', (newGameState: GameState) => {
@@ -54,7 +54,7 @@ const GameView: React.FC = () => {
             socket.off('gameNotFound');
             socket.off('playerDisconnected');
             socket.off('gameEnded');
-            socket.emit('leaveGame', { gameId, playerId: user.id });
+            socket.emit('leaveGame', { gameId, playerId: user.userId });
         };
     }, [gameId, socket, user, navigate, setGameState]);
 
@@ -63,7 +63,7 @@ const GameView: React.FC = () => {
 
         socket.emit('playCard', {
             gameId,
-            playerId: user.id,
+            playerId: user.userId,
             cardId: card.id
         });
     };
@@ -73,14 +73,14 @@ const GameView: React.FC = () => {
 
         socket.emit('gameAction', {
             gameId,
-            playerId: user.id,
+            playerId: user.userId,
             action
         });
     };
 
     const handleLeaveGame = () => {
         if (socket && gameId && user) {
-            socket.emit('leaveGame', { gameId, playerId: user.id });
+            socket.emit('leaveGame', { gameId, playerId: user.userId });
         }
         navigate('/rooms');
     };
@@ -139,7 +139,7 @@ const GameView: React.FC = () => {
             <main className="flex-1 overflow-hidden">
                 <GameBoard
                     gameState={gameState}
-                    currentPlayerId={user.id}
+                    currentPlayerId={user.userId}
                     onCardPlay={handleCardPlay}
                     onGameAction={handleGameAction}
                 />

@@ -52,7 +52,7 @@ export class RoomService {
         return room;
     }
 
-    async joinRoom(roomId: string, user: { id: string; username: string }): Promise<Room> {
+    async joinRoom(roomId: string, user: { userId: string; userName: string }): Promise<Room> {
         const room = this.rooms.get(roomId);
 
         if (!room) {
@@ -63,13 +63,13 @@ export class RoomService {
             throw new Error('Room is full');
         }
 
-        if (room.currentPlayers.some(p => p.id === user.id)) {
+        if (room.currentPlayers.some(p => p.id === user.userId)) {
             throw new Error('Already in room');
         }
 
         room.currentPlayers.push({
-            id: user.id,
-            username: user.username,
+            id: user.userId,
+            username: user.userName,
             isReady: false
         });
 

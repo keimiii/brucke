@@ -20,16 +20,18 @@ export const SocketProvider: React.FC<SocketProviderProps> = ({ children }) => {
 
     useEffect(() => {
         if (!user) return;
+        const token = localStorage.getItem('token');
 
         // Initialize socket connection
         const newSocket = io(process.env.REACT_APP_SERVER_URL || 'http://localhost:3001', {
             auth: {
-                userId: user.id,
-                userName: user.name
+                token: token || ''
             }
         });
 
-        newSocket.on('connect', () => {
+        console.log('New socket created');
+
+        newSocket.on('connection', () => {
             setConnected(true);
             console.log('Connected to server');
         });

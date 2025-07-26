@@ -6,7 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="52d3b605-f5da-41d7-97d6-ed5da75bb43f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Game/GameView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Game/GameView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/contexts/AuthContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/contexts/AuthContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/contexts/SocketContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/contexts/SocketContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useAuth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useAuth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/src/controllers/authController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/src/controllers/authController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/src/controllers/gameController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/src/controllers/gameController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/src/controllers/roomController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/src/controllers/roomController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/src/middleware/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/src/middleware/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/src/services/roomService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/src/services/roomService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/src/socket/gameEvents.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/src/socket/gameEvents.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/src/types/express.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/src/types/express.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +103,8 @@
       <workItem from="1753337202893" duration="8852000" />
       <workItem from="1753419936721" duration="677000" />
       <workItem from="1753455110213" duration="4943000" />
-      <workItem from="1753498001240" duration="262000" />
+      <workItem from="1753498001240" duration="298000" />
+      <workItem from="1753498975422" duration="5703000" />
     </task>
     <servers />
   </component>

@@ -5,9 +5,9 @@ import { GameService } from '../services/gameService';
 import { RoomService } from '../services/roomService';
 
 export interface AuthSocket extends Socket {
-    user?: {
-        id: string;
-        username: string;
+    auth?: {
+        userId: string;
+        userName: string;
     };
 }
 
@@ -28,23 +28,22 @@ export const setupSocketHandlers = (io: Server) => {
             if (err) {
                 return next(new Error('Authentication error'));
             }
-
-            socket.user = decoded as { id: string; username: string };
+            socket.auth = decoded as { userId: string; userName: string };
             next();
         });
     });
 
     io.on('connection', (socket: AuthSocket) => {
-        console.log(`User ${socket.user?.username} connected`);
+        console.log(`User ${socket.auth?.userName} connected`);
 
         // Join room
         socket.on('join-room', async (roomId: string) => {
             try {
                 await socket.join(roomId);
-                const room = await roomService.joinRoom(roomId, socket.user!);
+                const room = await roomService.joinRoom(roomId, socket.auth!);
 
                 socket.to(roomId).emit('user-joined', {
-                    user: socket.user,
+                    user: socket.auth,
                     room
                 });
 
@@ -58,10 +57,10 @@ export const setupSocketHandlers = (io: Server) => {
         socket.on('leave-room', async (roomId: string) => {
             try {
                 await socket.leave(roomId);
-                const room = await roomService.leaveRoom(roomId, socket.user!.id);
+                const room = await roomService.leaveRoom(roomId, socket.auth!.userId);
 
                 socket.to(roomId).emit('user-left', {
-                    userId: socket.user!.id,
+                    userId: socket.auth!.userId,
                     room
                 });
             } catch (error) {
@@ -84,7 +83,7 @@ export const setupSocketHandlers = (io: Server) => {
             try {
                 const gameState = await gameService.makeMove(
                     data.gameId,
-                    socket.user!.id,
+                    socket.auth!.userId,
                     data.move
                 );
 
@@ -96,9 +95,9 @@ export const setupSocketHandlers = (io: Server) => {
 
         // Handle disconnect
         socket.on('disconnect', async () => {
-            console.log(`User ${socket.user?.username} disconnected`);
+            console.log(`User ${socket.auth?.userName} disconnected`);
             // Clean up user from rooms
-            await roomService.handleDisconnect(socket.user!.id);
+            await roomService.handleDisconnect(socket.auth!.userId);
         });
     });
 };
