@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { SocketProvider } from './contexts/SocketContext';
@@ -13,7 +13,11 @@ import { Provider } from "./components/ui/provider"
 import { Center } from "@chakra-ui/react"
 
 const App: React.FC = () => {
-  return (
+    useEffect(() => {
+        // Clear existing local storage
+        localStorage.clear();
+    }, []);
+    return (
       <Provider>
           <AuthProvider>
             <SocketProvider>
