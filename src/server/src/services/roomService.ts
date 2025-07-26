@@ -1,16 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
-
-export interface Room {
-    id: string;
-    name: string;
-    maxPlayers: number;
-    currentPlayers: Player[];
-    isPrivate: boolean;
-    createdBy: string;
-    createdAt: Date;
-    status: 'waiting' | 'playing' | 'finished';
-    gameId?: string;
-}
+// @ts-ignore
+import { Room } from '../../../types/room';
 
 export interface Player {
     id: string;
@@ -23,7 +13,7 @@ export class RoomService {
 
     async getAllRooms(): Promise<Room[]> {
         return Array.from(this.rooms.values())
-            .filter(room => !room.isPrivate && room.status !== 'finished');
+            .filter(room => !room.settings.isPrivate && room.status !== 'finished');
     }
 
     async createRoom(data: {
@@ -36,16 +26,27 @@ export class RoomService {
         const room: Room = {
             id: uuidv4(),
             name: data.name,
-            maxPlayers: data.maxPlayers,
-            currentPlayers: [{
+            players: [{
                 id: data.createdBy,
-                username: data.creatorName,
-                isReady: false
+                name: data.creatorName,
+                isReady: false,
+                isOnline: false,
+                hand: [],
+                score: 0,
+                position: 'north',
+                tricksWon: 0
             }],
-            isPrivate: data.isPrivate,
             createdBy: data.createdBy,
             createdAt: new Date(),
-            status: 'waiting'
+            hostId: data.createdBy,
+            status: 'waiting',
+            settings: {
+                maxPlayers: data.maxPlayers,
+                isPrivate: false,
+                allowSpectators: false
+            },
+            spectators: [],
+            game: null
         };
 
         this.rooms.set(room.id, room);
@@ -59,18 +60,23 @@ export class RoomService {
             throw new Error('Room not found');
         }
 
-        if (room.currentPlayers.length >= room.maxPlayers) {
+        if (room.players.length >= room.settings.maxPlayers) {
             throw new Error('Room is full');
         }
 
-        if (room.currentPlayers.some(p => p.id === user.userId)) {
+        if (room.players.some(p => p.id === user.userId)) {
             throw new Error('Already in room');
         }
 
-        room.currentPlayers.push({
+        room.players.push({
             id: user.userId,
-            username: user.userName,
-            isReady: false
+            name: user.userName,
+            isReady: false,
+            isOnline: false,
+            hand: [],
+            score: 0,
+            position: 'south', // TODO update position of user
+            tricksWon: 0
         });
 
         return room;
@@ -83,10 +89,10 @@ export class RoomService {
             throw new Error('Room not found');
         }
 
-        room.currentPlayers = room.currentPlayers.filter(p => p.id !== userId);
+        room.players = room.players.filter(p => p.id !== userId);
 
         // Delete room if empty
-        if (room.currentPlayers.length === 0) {
+        if (room.players.length === 0) {
             this.rooms.delete(roomId);
         }
 
@@ -100,7 +106,7 @@ export class RoomService {
     async handleDisconnect(userId: string): Promise<void> {
         // Remove user from all rooms
         for (const [roomId, room] of this.rooms.entries()) {
-            if (room.currentPlayers.some(p => p.id === userId)) {
+            if (room.players.some(p => p.id === userId)) {
                 await this.leaveRoom(roomId, userId);
             }
         }

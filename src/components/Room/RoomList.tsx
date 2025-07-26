@@ -2,28 +2,15 @@ import React from "react";
 import { SimpleGrid, Box } from "@chakra-ui/react";
 import { useNavigate } from 'react-router-dom';
 
+// TODO get list of rooms from API
 const SampleRooms = [
     {
         id: "1",
         name: "Room 1",
-        players: [
-            {
-                id: "1",
-                name: "Player 1",
-                isOnline: true
-            },
-        ]
     },
     {
         id: "2",
         name: "Room 2",
-        players: [
-            {
-                id: "2",
-                name: "Player 2",
-                isOnline: true
-            },
-        ]
     }
 ]
 
@@ -32,6 +19,10 @@ const RoomList: React.FC = () => {
     const handleRoomClick = (room: string) => {
         if (room === '') return;
         navigate(`/room/${room}`);
+    };
+    const handleRoomCreate = (roomName: string) => {
+        if (roomName === '') return;
+        // TODO call createRoom API and navigate to room page
     };
 
     return (
@@ -44,6 +35,9 @@ const RoomList: React.FC = () => {
                         <h4>{room.name}</h4>
                     </Box>
                 ))}
+                <Box background="red">
+                    <input type={'text'} placeholder={'Room Name'} onSubmit={() => handleRoomCreate('')}/>
+                </Box>
             </SimpleGrid>
         </div>
     );

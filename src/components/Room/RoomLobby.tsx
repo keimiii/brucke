@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from 'react-router';
 import {useNavigate} from "react-router-dom";
 
+// TODO get list of players for current room from API
 const SamplePlayers = [
     {
         id: "1",

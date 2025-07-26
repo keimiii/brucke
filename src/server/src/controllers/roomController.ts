@@ -22,7 +22,7 @@ export const createRoom = async (req: AuthRequest, res: Response, next: NextFunc
             maxPlayers,
             isPrivate,
             createdBy: req.user!.userId,
-            creatorName: req.user!.userName
+            creatorName: req.user!.userName,
         });
 
         res.status(201).json({ room });
