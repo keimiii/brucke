@@ -24,3 +24,4 @@ yarn-error.log*
 
 /src/server/.env
 .idea
+.idea/*

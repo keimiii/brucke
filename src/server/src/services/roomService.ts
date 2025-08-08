@@ -170,15 +170,6 @@ export class RoomService {
             // Update player to remove room association
             await supabaseService.updatePlayerRoom(userId, null);
 
-            // Check if room is now empty
-            const remainingPlayers = await supabaseService.getPlayersInRoom(roomId);
-            
-            if (remainingPlayers.length === 0) {
-                // Delete room if empty
-                await supabaseService.deleteRoom(roomId);
-                throw new Error('Room deleted as it became empty');
-            }
-
             // Return updated room
             const updatedRoom = await this.getRoomById(roomId);
             if (!updatedRoom) {
