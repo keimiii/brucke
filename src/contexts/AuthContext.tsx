@@ -1,12 +1,14 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import { User } from '../hooks/useAuth';
-import {v4 as uuidv4} from 'uuid';
+import { AuthService, LoginRequest, RegisterRequest } from '../services/authService';
 
 interface AuthContextType {
     user: User | null;
-    login: (username: string) => Promise<void>;
+    login: (credentials: LoginRequest) => Promise<void>;
+    register: (userData: RegisterRequest) => Promise<void>;
     logout: () => void;
     loading: boolean;
+    validateToken: () => Promise<boolean>;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -19,36 +21,62 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        // Check for existing session
-        const storedUser = localStorage.getItem('user');
-        if (storedUser) {
-            setUser(JSON.parse(storedUser));
+    const validateToken = async (): Promise<boolean> => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            return false;
         }
-        setLoading(false);
+
+        try {
+            const response = await AuthService.validateToken();
+            setUser(response.user);
+            return true;
+        } catch (error) {
+            console.error('Token validation error:', error);
+            // If it's a network error (server not running), keep the user logged in
+            // but mark the token as potentially stale
+            if (error instanceof TypeError && error.message.includes('fetch')) {
+                console.warn('Backend server may not be running, keeping user logged in');
+                return true;
+            }
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            setUser(null);
+            return false;
+        }
+    };
+
+    useEffect(() => {
+        const initializeAuth = async () => {
+            try {
+                await validateToken();
+            } catch (error) {
+                console.error('Auth initialization error:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        initializeAuth();
     }, []);
 
-    const login = async (username: string) => {
+    const login = async (credentials: LoginRequest) => {
         try {
-            let uuid = uuidv4();
-            const usr: User = {
-                userId: uuid,
-                userName: username
-            };
-            const response = await fetch('http://localhost:3001/api/auth/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({"user": usr})
-            });
+            const response = await AuthService.login(credentials);
+            setUser(response.user);
+            localStorage.setItem('user', JSON.stringify(response.user));
+            localStorage.setItem('token', response.token);
+        } catch (error) {
+            throw error;
+        }
+    };
 
-            if (!response.ok) {
-                throw new Error('Login failed');
-            }
-
-            const res = await response.json();
-            setUser(usr);
-            localStorage.setItem('user', JSON.stringify(usr));
-            localStorage.setItem('token', res.token);
+    const register = async (userData: RegisterRequest) => {
+        try {
+            const response = await AuthService.register(userData);
+            setUser(response.user);
+            localStorage.setItem('user', JSON.stringify(response.user));
+            localStorage.setItem('token', response.token);
         } catch (error) {
             throw error;
         }
@@ -61,7 +89,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout, loading }}>
+        <AuthContext.Provider value={{ user, login, register, logout, loading, validateToken }}>
             {children}
         </AuthContext.Provider>
     );

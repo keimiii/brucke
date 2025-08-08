@@ -7,10 +7,8 @@
     <list default="true" id="52d3b605-f5da-41d7-97d6-ed5da75bb43f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Room/RoomList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Room/RoomList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Room/RoomLobby.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Room/RoomLobby.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/src/controllers/roomController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/src/controllers/roomController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/src/services/gameService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/src/services/gameService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/src/services/roomService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/src/services/roomService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/room.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/room.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +34,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/leongkaymei/Desktop/Projects/Frontend/german-bridge/src/server&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/leongkaymei/Desktop/Projects/Frontend/german-bridge&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -100,7 +98,16 @@
       <workItem from="1753455110213" duration="4943000" />
       <workItem from="1753498001240" duration="298000" />
       <workItem from="1753498975422" duration="9023000" />
-      <workItem from="1753514950771" duration="1868000" />
+      <workItem from="1753514950771" duration="6463000" />
+      <workItem from="1753671191926" duration="2137000" />
+      <workItem from="1753718996106" duration="1403000" />
+      <workItem from="1753770894393" duration="732000" />
+      <workItem from="1753979024541" duration="8000" />
+      <workItem from="1754378863376" duration="1068000" />
+      <workItem from="1754403989308" duration="817000" />
+      <workItem from="1754466284184" duration="21000" />
+      <workItem from="1754559498312" duration="1210000" />
+      <workItem from="1754633767853" duration="129000" />
     </task>
     <servers />
   </component>

@@ -45,6 +45,8 @@ export class GameService {
         // In a real implementation, you'd validate the room and players
         const gameId = uuidv4();
 
+        // Create new game
+
         const game: GameState = {
             id: gameId,
             roomId,
