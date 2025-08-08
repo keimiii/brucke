@@ -202,7 +202,7 @@ export class RoomService {
             
             return {
                 id: supabaseRoom.room_id,
-                name: `Room ${supabaseRoom.room_id.slice(0, 8)}`,
+                name: supabaseRoom.name,
                 players: players.map(player => ({
                     id: player.user_id,
                     name: player.email,
