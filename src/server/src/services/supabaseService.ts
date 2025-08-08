@@ -18,7 +18,8 @@ export interface Room {
     room_id: string;
     created_at: string;
     game_id: string | null;
-    status: 'waiting' | 'playing' | 'finished';
+    name: string;
+    status: number; // 0 - waiting, 1 - playing, 2 - finished
 }
 
 export interface Database {

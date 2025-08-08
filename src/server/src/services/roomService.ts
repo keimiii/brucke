@@ -25,7 +25,7 @@ export class RoomService {
                     
                     return {
                         id: supabaseRoom.room_id,
-                        name: `Room ${supabaseRoom.room_id.slice(0, 8)}`, // Generate a name from room ID
+                        name: supabaseRoom.name,
                         players: players.map(player => ({
                             id: player.user_id,
                             name: player.email, // Using email as name for now
@@ -51,7 +51,7 @@ export class RoomService {
                 })
             );
 
-            return rooms.filter(room => room.status !== 'finished');
+            return rooms.filter(room => room.status !== 2);
         } catch (error) {
             console.error('Error fetching rooms from Supabase:', error);
             throw error;
@@ -72,7 +72,8 @@ export class RoomService {
             const supabaseRoom = await supabaseService.createRoom({
                 room_id: roomId,
                 game_id: null,
-                status: 'waiting'
+                name: data.name,
+                status: 0
             });
 
             // Get or create player in Supabase
@@ -108,7 +109,7 @@ export class RoomService {
                 createdBy: data.createdBy,
                 createdAt: new Date(supabaseRoom.created_at),
                 hostId: data.createdBy,
-                status: 'waiting',
+                status: 0,
                 settings: {
                     maxPlayers: data.maxPlayers,
                     isPrivate: data.isPrivate,

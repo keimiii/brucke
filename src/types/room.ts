@@ -12,5 +12,5 @@ export interface Room {
     game: GameState | null;
     settings: GameSettings;
     createdAt: Date;
-    status: 'waiting' | 'playing' | 'finished';
+    status: number; // 0 - waiting, 1 - playing, 2 - finished
 }

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { RoomService } from '../../services/roomService';
 import { Room } from '../../types/room';
 import { useAuth } from '../../hooks/useAuth';
+import { generateSlug } from "random-word-slugs";
 
 const RoomList: React.FC = () => {
     const [rooms, setRooms] = useState<Room[]>([]);
@@ -43,12 +44,21 @@ const RoomList: React.FC = () => {
         }
     };
 
-    const handleCreateRoom = () => {
+    const handleCreateRoom = async () => {
         if (!user) {
             alert("Please log in to create a room");
             return;
         }
-        navigate('/create-room');
+
+        try {
+            const roomName =  generateSlug();
+            const roomData = await RoomService.createRoom({
+                name: roomName
+            });
+            navigate(`/room/${roomData.id}`);
+        } catch (err) {
+            alert(err instanceof Error ? err.message : "Failed to join room");
+        }
     };
 
     const handleLogout = () => {
@@ -157,11 +167,11 @@ const RoomList: React.FC = () => {
                                         <h3 className="text-lg font-semibold text-gray-900 mb-1">{room.name}</h3>
                                         <div className="flex items-center space-x-2">
                                             <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                                                room.status === 'waiting' ? 'bg-yellow-100 text-yellow-800' :
-                                                room.status === 'playing' ? 'bg-green-100 text-green-800' :
+                                                room.status === 0 ? 'bg-yellow-100 text-yellow-800' :
+                                                room.status === 1 ? 'bg-green-100 text-green-800' :
                                                 'bg-gray-100 text-gray-800'
                                             }`}>
-                                                {room.status}
+                                                {room.status === 0 ? 'Waiting' : room.status === 1 ? 'Playing' : 'Finished'}
                                             </span>
                                         </div>
                                     </div>
